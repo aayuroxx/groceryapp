@@ -1,0 +1,45 @@
+<div class="my-container mx-auto border border-dark" >
+    <div class="row g-0">
+
+        <!-- Profile Image of Product -->
+        <div class="col-4 p-4">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/{{imageIndex}}.jpg"
+                     alt="" class="w-100">
+            </div>
+        </div>
+        <!-- Details of Product -->
+            <div class="col-8 p-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>{{product.title}} | titlecase</h2>
+                    </div>
+    
+                    <div class="card-body">
+                       
+                        <h4 class="card-subtitle text-success">
+                            {{product.price}} 
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-subtitle my-2 text-primary"> {{product.quantity}} products are available. </h6>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-outline-success" type="button" [disabled]="!utilityService.isLoggedIn()"
+                            (click)="this.utilityService.addToCart(product)">Add to Cart
+                            <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-text">Description</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-action"
+                                *ngFor="let item of product.description.split('. ')">
+                                {{item}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+

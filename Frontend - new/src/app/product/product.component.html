@@ -1,0 +1,60 @@
+<div class="grid-view"  *ngIf="view === 'grid'">
+    <div class="card-header fw-bold fs-5 text-success">
+        H
+    </div>
+    <div class="overflow=hidden d-flex justify-content-center align-items-center" >
+        <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.jpg" alt="" class="card-img-top"
+        appOpenproductdetails [productId]="product.id">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title title">{{product.title}}</h5>
+        <h6 class="card-subtitle my-2 text-primary">{{product.quantity}}  products are available.</h6>
+        <div class="scroll">
+
+            <p class="card-text description" style="width: 320px; height: 250px; overflow: auto; border: none; padding: 10px;">{{product.description}}</p>
+
+        </div>
+
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-success">Price {{product.price}}</h5>
+        
+    </div>
+    <div class="card-footer d-grid gap-2">
+        <button type="button" class="btn btn-outline-success" type="button" [disabled]="!utilityService.isLoggedIn()"
+        (click)="this.utilityService.addToCart(product)">Add to Cart
+                            <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
+                            </button>
+
+    </div>
+</div>
+
+<!-- Cart item View -->
+
+<div class="cart-item-view" *ngIf="view === 'currcartitem'">
+    <div class="card">
+        <div class="row g-0">
+
+            <div class="col-4 overflow-hidden d-flex justify-content-center align-items-center">
+                <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.jpg"
+                class="img-fluid rounded-start" 
+                alt=" "  appOpenproductdetails [productId]="product.id">
+
+            </div>
+            
+            <div class="col-8">
+                <div class="card-body">
+                    <h5 class="card-title title"> {{product.title}} </h5>
+                    <h5 class="card-title text-success"> 
+                       
+                    </h5>
+                    <h6 class="card-subtitle text-success">
+                        {{product.price}}
+                    </h6>
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+</div>
